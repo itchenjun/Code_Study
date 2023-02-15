@@ -23,10 +23,24 @@ void testClass_StructFunc(void)
 	Func f3 = f;//拷贝构造	//NULL : 0 / 如果声明属性时未给初始值将返回地址
 }
 
+//拷贝测试
 void testClass_Copy(void)
 {
 	Func1 f1("拷贝测试: ",11);
 	Func1 f2(f1);
 	cout << f1.name << *f1.age << endl;
 	cout << f2.name << *f2.age << endl;
+}
+//*****************************
+//********	this指针的概念		*
+//*****************************
+void test_ClassThis(void)
+{
+	ClassThis c1(18);
+	cout << "c1.age = " << c1.age << endl; //18
+
+	ClassThis c2(24);
+	//叠加
+	c2.ClassThisFunction(c1).ClassThisFunction(c1);
+	cout << "c2.age = " << c2.age << endl;//60
 }

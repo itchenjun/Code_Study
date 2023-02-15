@@ -99,3 +99,25 @@ public:
 	int *age;
 };
 void testClass_Copy(void);
+
+//*****************************
+//********	this指针的概念		*
+//*****************************
+/*
+*	1.当形参和成员变量同名时，可用this指针来区分
+*	2.返回对象本身
+*/
+class ClassThis {
+public:
+	ClassThis(int age) {
+		//1
+		this->age = age;
+	}
+	ClassThis& ClassThisFunction(ClassThis ct) {
+		this->age += ct.age;
+		//2
+		return *this;
+	}
+	int age;
+};
+void test_ClassThis(void);

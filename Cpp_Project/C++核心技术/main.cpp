@@ -6,8 +6,11 @@ using namespace std;
 int main()
 {
 	
+	//4.this测试
+	test_ClassThis();
+
 	//3.拷贝构造--深浅拷贝
-	testClass_Copy();
+	//testClass_Copy();
 
 	//2.构造函数 析构函数
 	//testClass_StructFunc();
