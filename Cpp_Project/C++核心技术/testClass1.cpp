@@ -44,3 +44,16 @@ void test_ClassThis(void)
 	c2.ClassThisFunction(c1).ClassThisFunction(c1);
 	cout << "c2.age = " << c2.age << endl;//60
 }
+
+/*
+*	空指针访问成员函数
+*	注：如果用到this指针，需要加以判断，保证代码的健壮性
+*
+*/
+void test_Null_Point(void)
+{
+	Null_Point* pNull = NULL;
+	pNull->ShowComm();
+
+	pNull->ShowAdvance();
+}

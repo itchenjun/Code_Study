@@ -5,9 +5,16 @@ using namespace std;
 
 int main()
 {
+
+
+	//6.const修饰成员函数
 	
+
+	//5.空指针访问成员函数
+	//test_Null_Point();
+
 	//4.this测试
-	test_ClassThis();
+	//test_ClassThis();
 
 	//3.拷贝构造--深浅拷贝
 	//testClass_Copy();

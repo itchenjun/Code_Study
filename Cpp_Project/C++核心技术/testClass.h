@@ -121,3 +121,68 @@ public:
 	int age;
 };
 void test_ClassThis(void);
+
+
+/*
+*	空指针访问成员函数
+*	但不能访问成员属性
+*	注：如果用到this指针，需要加以判断，保证代码的健壮性
+* 
+*/
+
+class Null_Point {
+
+public:
+	void ShowComm() {
+		cout << "普通方法" << endl;
+	}
+	//以下会直接报错
+	/*void ShowAdvance() {
+		cout << "调用成员："<< this->m_Method << endl;
+	}*/
+	//改进：
+	void ShowAdvance() {
+		if (this == NULL) {
+			cout << "无法调用成员~~~" << endl;
+			return;
+		}
+		cout << "调用成员：" << this->m_Method << endl;
+	}
+	int m_Method;
+};
+void test_Null_Point(void);
+
+/*
+* const修饰成员函数:两个概念
+* 
+* **常函数：**
+* 成员函数后加const后我们称为这个函数为**常函数**
+* 常函数内不可以修改成员属性
+* 成员属性声明时加关键字mutable后，在常函数中依然可以修改
+*  
+* **常对象：**
+* 声明对象前加const称该对象为常对象
+* 常对象只能调用常函数
+*/
+class ConstObject {
+
+public:
+	int m_AA;
+	mutable int m_BB; //mutable 可变的
+	ConstObject() {
+		m_AA = 0;
+		m_BB = 0;
+	}
+	//this指针的本质是一个指针常量，指针的指向不可修改
+	//如果想让指针指向的值也不可以修改，需要声明常函数
+	////const Type* const pointer;
+	//this = NULL; //不能修改指针的指向 Person* const this;
+	//this->mA = 100; //但是this指针指向的对象的数据是可以修改的
+	void Show() const {
+		//加上const后不可修改
+		//this->m_AA = 100;//不可修改的左值
+		this->m_BB = 101;
+	}
+
+};
+
