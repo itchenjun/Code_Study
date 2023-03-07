@@ -183,6 +183,9 @@ public:
 		//this->m_AA = 100;//不可修改的左值
 		this->m_BB = 101;
 	}
+	void Show2() {
+		m_AA = 5;
+	}
 
 };
-
+void test_ConstObject(void);

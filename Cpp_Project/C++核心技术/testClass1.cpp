@@ -57,3 +57,24 @@ void test_Null_Point(void)
 
 	pNull->ShowAdvance();
 }
+
+/*
+* const修饰成员函数:两个概念	常函数 常对象
+* 使用const修饰
+*/
+void test_ConstObject(void)
+{
+	//const修饰的对象为 常对象
+	const ConstObject constObject;
+	//constObject.m_AA = 2; //常对象不能修改成员变量的值,但是可以访问
+	cout << constObject.m_AA << endl;
+
+	constObject.m_BB = 2;
+	cout << constObject.m_BB << endl;
+
+	//常对象只能调用常函数
+	//constObject.Show2();//错误
+	constObject.Show();
+	cout << constObject.m_BB << endl;
+
+}
