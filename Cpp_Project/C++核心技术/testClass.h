@@ -167,8 +167,7 @@ void test_Null_Point(void);
 class ConstObject {
 
 public:
-	int m_AA;
-	mutable int m_BB; //mutable 可变的
+	
 	ConstObject() {
 		m_AA = 0;
 		m_BB = 0;
@@ -186,6 +185,73 @@ public:
 	void Show2() {
 		m_AA = 5;
 	}
-
+	int m_AA;
+	mutable int m_BB; //mutable 可变的
 };
 void test_ConstObject(void);
+
+
+/*
+*	友元
+* 全局函数做友元
+* 类做友元
+* 成员函数做友元
+* 
+*/
+/*	
+*	全局函数-友元
+*/
+
+
+class Friend_Object {
+
+	//声明全局函数 为 好朋友(友元)
+	friend void Global_Firend(Friend_Object* fPtr);
+public:
+	Friend_Object()
+	{
+		this->bank_card = "123456";
+		this->phone = "iPhone14Pro";
+	}
+
+public:
+	string phone;
+private:
+	//想要访问该成员，必须声明友元 friend
+	string bank_card;
+};
+
+static void Global_Firend(Friend_Object* fPtr);
+void Global_Firend_Test(void);
+
+/*
+* 类 -友元
+* 外部类做实现-初始化等等
+*/
+
+class In_Friend;
+class OutFriend {
+public:
+	//类中做声明，实现在cpp文件中
+	OutFriend();
+	void find();
+	void find2();
+	In_Friend* inFriend;
+};
+
+class In_Friend {
+	//声明类为友元
+	friend OutFriend;
+
+	//声明成员函数为友元
+	friend void OutFriend::find2();
+	
+public:
+	In_Friend();
+public:
+	string phone;
+private:
+	//想要访问该成员，必须声明友元 friend
+	string bank_card;
+};
+void Class_Freind_Test(void);

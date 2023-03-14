@@ -7,10 +7,12 @@ int main()
 {
 
 
-	//7.
+	//7.友元
+	//Global_Firend_Test();
+	Class_Freind_Test();
 
 	//6.const修饰成员函数
-	test_ConstObject();
+	//test_ConstObject();
 
 	//5.空指针访问成员函数
 	//test_Null_Point();

@@ -69,6 +69,7 @@ void test_ConstObject(void)
 	//constObject.m_AA = 2; //常对象不能修改成员变量的值,但是可以访问
 	cout << constObject.m_AA << endl;
 
+	//mutable int m_BB; //mutable 修饰的可变
 	constObject.m_BB = 2;
 	cout << constObject.m_BB << endl;
 
@@ -78,3 +79,52 @@ void test_ConstObject(void)
 	cout << constObject.m_BB << endl;
 
 }
+
+/*
+*	友元
+*/
+
+static void Global_Firend(Friend_Object* fPtr)
+{
+	cout << "好朋友访问：" << fPtr->phone << endl;
+	cout << "好朋友访问：" << fPtr->bank_card << endl;
+}
+void Global_Firend_Test(void)
+{
+	Friend_Object fPtr1;
+	Global_Firend(&fPtr1);
+}
+
+/*
+*	类-友元
+*/
+//类外写成员函数实现
+In_Friend::In_Friend()
+{
+	this->bank_card = "123456";
+	this->phone = "iPhone14Pro";
+}
+OutFriend::OutFriend()
+{
+	inFriend = new In_Friend;
+}
+
+void OutFriend::find()
+{
+	cout << "类-好朋友访问：" << inFriend->phone << endl;
+	//如果要访问，必须声明该类为友元
+	//cout << "类-好朋友访问：" << inFriend->bank_card << endl;
+}
+void OutFriend::find2()
+{
+	cout << "成员函数--好朋友访问：" << inFriend->phone << endl;
+	//如果要访问，必须声明该成员函数为友元
+	//cout << "成员函数--好朋友访问：" << inFriend->bank_card << endl;
+}
+void Class_Freind_Test(void)
+{
+	OutFriend of;
+	of.find();
+	of.find2();
+}
+
