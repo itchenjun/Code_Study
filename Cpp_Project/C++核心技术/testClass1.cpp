@@ -128,3 +128,37 @@ void Class_Freind_Test(void)
 	of.find2();
 }
 
+/*
+* 继承
+*/
+void Inherit_test(void)
+{
+	CPP cpp;
+	cpp.info();
+	cpp.head();
+	cpp.central();
+	cpp.tail();
+	
+	C c;
+	c.info();
+	c.head();
+	c.central();
+	c.tail();
+}
+/*
+*	子父类同名成员	函数/属性	的继承
+*	如何访问？
+*	子类访问本身可直接访问
+*	子类访问父类的 函数/属性 需要 引入父类作用域
+*/
+void Inherit_test1(void)
+{
+	CPP cpp;
+	//直接访问，访问的是子类中的成员 函数/属性
+	cout << "CPP类中：	CPP Study" << cpp.m_name << endl;
+	cpp.info();
+
+	//访问父类的同名成员 函数/属性	需要加入父类作用域
+	cout << "PublicArea类中：CPP Study" << cpp.PublicArea::m_name << endl;
+	cpp.PublicArea::info();
+}

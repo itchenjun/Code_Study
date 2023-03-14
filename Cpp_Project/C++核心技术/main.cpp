@@ -7,9 +7,13 @@ int main()
 {
 
 
+	//8.继承
+	//Inherit_test();
+	Inherit_test1();
+
 	//7.友元
 	//Global_Firend_Test();
-	Class_Freind_Test();
+	//Class_Freind_Test();
 
 	//6.const修饰成员函数
 	//test_ConstObject();

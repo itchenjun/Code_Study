@@ -255,3 +255,61 @@ private:
 	string bank_card;
 };
 void Class_Freind_Test(void);
+
+
+/*
+* 继承
+*	使用继承的技术，减少重复代码
+*/
+
+class PublicArea {
+public:
+	PublicArea() {
+		this->m_name = "父类";
+	}
+	void head() {
+		cout << "网页	图片	视频	学术" << endl;
+	}
+	void central() {
+		cout << "不一样的内容" << endl;
+	}
+	void tail() {
+		cout << "百度相关搜索" << endl;
+	}
+	void info() {
+		cout << "父类中：CPP Study" << endl;
+	}
+
+public:
+	string m_name;
+};
+
+//继承1
+class CPP : public PublicArea
+{
+public:
+	CPP() {
+		this->m_name = "子类";
+	}
+	void info() {
+		cout << "子类中：CPP Study" << endl;
+	}
+public:
+	string m_name;
+};
+//继承2
+class C : public PublicArea
+{
+public:
+	void info() {
+		cout << "C Study" << endl;
+	}
+};
+void Inherit_test(void);
+
+/*
+* 继承 同名成员时，访问需要加::
+*/
+void Inherit_test1(void);
+
+
